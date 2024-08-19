@@ -3,6 +3,18 @@ import classes from "./page.module.css";
 import Image from "next/image";
 import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({ params }) {
+  const meal = getMeal(params.mealSlug);
+  if (!meal) {
+    notFound();
+  }
+  return {
+    title: meal.title,
+    description: meal.summary,
+  };
+}
+
 function MealPages({ params }) {
   const meal = getMeal(params.mealSlug);
   if (!meal) {
@@ -13,7 +25,7 @@ function MealPages({ params }) {
     <>
       <header className={classes.header}>
         <div className={classes.image}>
-          <Image src={meal.image} fill />
+          <Image src={meal.image} alt="" fill />
         </div>
         <div className={classes.headerText}>
           <h1>{meal.title}</h1>
