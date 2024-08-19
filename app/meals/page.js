@@ -16,7 +16,7 @@ export default async function MealsPage() {
       <header className={classes.header}>
         <h1>
           Delicious Meals, Pages
-          <span className={classes.highlight}>By You</span>
+          <span className={classes.highlight}> By You</span>
         </h1>
         <p>Choose your meal and cook it yourself</p>
         <p className={classes.cta}>
